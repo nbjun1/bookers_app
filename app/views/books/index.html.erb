@@ -1,14 +1,31 @@
 <h1>Books</h1>
 
+<% @books.each do |book| %>
+
+<div class="table">
+  <p>
+  <span>
+    <%= link_to book.title, book_path(book.id) %>  </span>
+   <p><a href="/books/params[:id]">show</a></p>
+   <p><a href="/books/params[:id]/edit">edit</a></p>
+
+  </p>
+
+<% end %>
+</div>
+
 <h2>New book</h2>
 
-<%= form_with model: Book.new do |f| %>
+<%= form_with model: @book, url: '/books', method: :post do |f| %>
 
  <h4>タイトル</h4>
- <%= f.text_field :title %>
+ <%= f.text_field :titile %>
 
  <h4>本文</h4>
  <%= f.text_area :body %>
 
 <p><%= f.submit 'Create Book' %></p>
 <% end %>
+
+<p><a href="/books/params[:id]">show</a></p>
+<p><a href="/books/params[:id]/edit">edit</a></p>
