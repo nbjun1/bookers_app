@@ -1,16 +1,15 @@
+<% @books.each do |book| %>
+
+
+ <h2>Title:<span><%= book.title %></span></h2>
+
+ <h2>Body:<span><%= book.body %></span></h2>
 
 
 
-<p>Title:
- <span><%= @book.body %></span>
-<p/>
-
-<p>Body:
- <span><%= @book.body %></span>
-</p>
-
-<p>
- <a href="/books/:id/edit">edit</a>
+<p><%= link_to 'Edit', edit_book_path(id: book.id) %>
   |
-  <a href="/books">back</a>
+  <%= link_to 'Back', books_path %>
  </p>
+
+<% end %>
