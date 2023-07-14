@@ -30,10 +30,10 @@
 
 <%= form_with model: @book, url: '/books', method: :post do |f| %>
 
- <h4>タイトル</h4>
+ <p>タイトル</p>
  <%= f.text_field :title %>
 
- <h4>本文</h4>
+ <p>本文</p>
  <%= f.text_area :body %>
 
 <p><%= f.submit 'Create Book' %></p>
