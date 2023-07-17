@@ -4,16 +4,7 @@
 </div>
 
 <h1>Books</h1>
-<% if @book.errors.any? %>
-<% byebug %>
-  <%= @book.errors.count %>errors prohibited this book from being saved:
-  <ul>
-    <% @book.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
 
-  </ul>
-<% end %>
  <table>
   <thead>
     <tr>
@@ -23,9 +14,10 @@
     </tr>
   </thead>
 
-<% @books.each do |book| %>
+
 
   <tbody>
+   <% @books.each do |book| %>
    <tr>
     <td><%= book.title %></td>
     <td><%= book.body %></td>
@@ -33,16 +25,24 @@
     <td><%= link_to 'Edit', edit_book_path(id: book.id) %></td>
     <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
    </tr>
+   <% end %>
   </tbody>
  </table>
 
-<% end %>
 
 <h2>New book</h2>
+<% if @book.errors.any? %>
 
+  <%= @book.errors.count %>errors prohibited this book from being saved:
+   <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
 
+   </ul>
+ <% end %>
 
-<%= form_with model: @book, url: '/books', method: :post do |f| %>
+<%= form_with model: @book, method: :post do |f| %>
 
  <p>タイトル</p>
  <%= f.text_field :title %>

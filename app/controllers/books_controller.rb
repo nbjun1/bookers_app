@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
  def index
    @books = Book.all
+   @book = Book.new
  end
 
  def new
@@ -9,7 +10,7 @@ class BooksController < ApplicationController
 
  def create
    @book = Book.new(book_params)
-
+   #byebug
    if @book.save
 
     flash[:notice] = "Book was successfully created"
